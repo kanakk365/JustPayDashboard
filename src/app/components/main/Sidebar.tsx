@@ -317,7 +317,7 @@ const Sidebar = () => {
 
   return (
     <SidebarRoot open={isSidebarOpen} setOpen={handleSetOpen} animate>
-      <SidebarBody className=" border-r border-[#E5EAF3] bg-white py-6 ">
+      <SidebarBody className=" border-r border-[#E5EAF3] bg-white py-6 h-screen max-h-screen">
       <div className="flex items-center gap-3 px-5">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-300 text-sm font-semibold text-white">
               BW
@@ -328,7 +328,7 @@ const Sidebar = () => {
               </div>
             ) : null}
           </div>
-        <ScrollArea className=" h-screen max-h-screen">
+        <ScrollArea className=" h-[calc(100vh-64px)] max-h-[calc(100vh-64px)]">
           
 
           <div className="mt-7 flex-1 space-y-6 pr-1 px-5">
