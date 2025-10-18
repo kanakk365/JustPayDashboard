@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { SetStateAction } from "react";
 import {
   IconBag,
@@ -15,15 +15,17 @@ import {
   IconPlay,
   IconSettings,
   IconUser,
-} from "@/app/components/icons";
+} from "@/components/icons";
 import { Sidebar as SidebarRoot, SidebarBody } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useSidebarStore } from "@/store/sidebarStore";
+import { usePathname, useRouter } from "next/navigation";
 
 type NavItem = {
   label: string;
   icon?: React.ComponentType<{ className?: string }>;
   active?: boolean;
+  href?: string;
   children?: NavItem[];
 };
 
@@ -43,7 +45,8 @@ const navSections: NavSection[] = [
   {
     title: "Dashboards",
     items: [
-       { label: "Default", icon: IconGrid, active: true },
+      { label: "Default", icon: IconGrid, active: true, href: "/" },
+      { label: "Orders", icon: IconBag, href: "/orders" },
       {
         label: "eCommerce",
         icon: IconBag,
@@ -134,11 +137,15 @@ const navSections: NavSection[] = [
   },
 ];
 
-const getInitialActiveItemKey = () => {
+const getInitialActiveItemKey = (pathname: string) => {
   for (const section of navSections) {
     for (const item of section.items) {
+      const itemKey = `${section.title}-${item.label}`;
+      if (item.href && item.href === pathname) {
+        return itemKey;
+      }
       if (item.active) {
-        return `${section.title}-${item.label}`;
+        return itemKey;
       }
     }
   }
@@ -150,6 +157,8 @@ const getInitialActiveItemKey = () => {
 const Sidebar = () => {
   const isSidebarOpen = useSidebarStore((state) => state.isOpen);
   const setSidebarOpen = useSidebarStore((state) => state.setOpen);
+  const pathname = usePathname();
+  const router = useRouter();
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
     () => {
       const initial: Record<string, boolean> = {};
@@ -163,7 +172,13 @@ const Sidebar = () => {
       return initial;
     }
   );
-  const [activeItemKey, setActiveItemKey] = useState<string>(getInitialActiveItemKey);
+  const [activeItemKey, setActiveItemKey] = useState<string>(() =>
+    getInitialActiveItemKey(pathname)
+  );
+
+  useEffect(() => {
+    setActiveItemKey(getInitialActiveItemKey(pathname));
+  }, [pathname]);
 
   const handleSetOpen = (value: SetStateAction<boolean>) => {
     setSidebarOpen(
@@ -185,7 +200,10 @@ const Sidebar = () => {
     const isFavoritesSection = sectionTitle === "Favorites";
     const isDefaultItem = item.label === "Default";
     const itemKey = `${sectionTitle}-${item.label}`;
-    const isActive = activeItemKey === itemKey;
+    const isRouteItem = Boolean(item.href);
+    const isActive = isRouteItem
+      ? item.href === pathname
+      : activeItemKey === itemKey;
 
     if (isDotNav) {
       return (
@@ -240,6 +258,9 @@ const Sidebar = () => {
       setActiveItemKey(itemKey);
       if (isExpandable) {
         toggleItem(item.label);
+      }
+      if (item.href) {
+        router.push(item.href);
       }
     };
 
