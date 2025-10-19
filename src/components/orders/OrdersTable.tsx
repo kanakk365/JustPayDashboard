@@ -92,7 +92,7 @@ export const OrdersTable = () => {
             <table className="min-w-full table-fixed">
               <thead className="text-xs font-semibold text-muted-foreground">
                 <tr className="border-b border-border">
-                  <th scope="col" className="w-8 py-2 text-left">
+                  <th scope="col" className="w-2 sm:w-8 py-2 text-left">
                     <Checkbox
                       checked={isAllSelected}
                       onClick={handleSelectAll}

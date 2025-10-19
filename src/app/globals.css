@@ -150,6 +150,11 @@ body {
   button {
     @apply min-h-10 min-w-10;
   }
+  
+  /* Override for checkboxes */
+  button[role="checkbox"] {
+    @apply min-h-0 min-w-0;
+  }
 
   main {
     @apply overflow-y-auto;
