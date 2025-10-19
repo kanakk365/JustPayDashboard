@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import {
   IconBell,
   IconClock,
@@ -101,15 +102,27 @@ const Navbar = ({ sectionLabel, pageLabel }: NavbarProps) => {
         <motion.button
           onClick={() => {
             if (isLoaded) {
-              toggleTheme();
+              triggerAnimation("theme", toggleTheme);
             }
           }}
-          whileTap={{ rotate: 360, scale: 0.8 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="grid place-items-center text-foreground transition cursor-pointer"
+          
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="grid place-items-center text-foreground transition cursor-pointer w-5 h-5 "
           aria-label="Toggle theme"
         >
-          {themeIcon}
+          <AnimatePresence mode="wait">
+            {isLoaded && (
+              <motion.div
+                key={theme}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {themeIcon}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.button>
         <motion.button
           type="button"
