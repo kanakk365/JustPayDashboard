@@ -262,12 +262,11 @@ const StatusBadge = ({ status }: { status: OrderStatus }) => {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium",
-        token.background,
+        "inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs ",
         token.text
       )}
     >
-      <span className={cn("h-2 w-2 rounded-full", token.dot)} />
+      <span className={cn("h-1 w-1 rounded-full", token.dot)} />
       {token.label}
     </span>
   );
@@ -360,16 +359,16 @@ export const OrdersTable = () => {
             <table className="min-w-full table-fixed">
               <thead className=" text-xs font-semibold text-[#7A8499]">
                 <tr className="border-b border-[#E8EBF4]">
-                  <th scope="col" className="w-8 py-4 text-left">
+                  <th scope="col" className="w-8 py-2 text-left">
                     <Checkbox />
                   </th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-thin ">Order ID</th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-thin ">User</th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-thin ">Project</th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-thin ">Address</th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-thin ">Date</th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-thin ">Status</th>
-                  <th scope="col" className="px-6 py-4 text-right text-sm font-thin" aria-label="Actions" />
+                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin ">Order ID</th>
+                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin ">User</th>
+                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin ">Project</th>
+                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin ">Address</th>
+                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin ">Date</th>
+                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin ">Status</th>
+                  <th scope="col" className="px-6 py-2 text-right text-sm font-thin" aria-label="Actions" />
                 </tr>
               </thead>
               <tbody className="text-sm text-[#1C1F2E]">
@@ -377,7 +376,7 @@ export const OrdersTable = () => {
                   <tr
                     key={`${order.id}-${index}`}
                     className={cn(
-                      "transition",
+                      "transition border-b border-[#E8EBF4]",
                       order.selected
                         ? "bg-[#F2F4FA]"
                         : index % 2 === 1
@@ -386,30 +385,30 @@ export const OrdersTable = () => {
                       "hover:bg-[#F6F8FC]"
                     )}
                   >
-                    <td className="w-8 py-4 align-middle">
+                    <td className="w-8 py-2 align-middle">
                       <Checkbox checked={order.selected} />
                     </td>
-                    <td className="px-6 py-4 align-middle font-medium text-[#1C1F2E]">{order.id}</td>
-                    <td className="px-6 py-4 align-middle">
+                    <td className="px-6 py-2 align-middle text-black">{order.id}</td>
+                    <td className="px-6 py-2 align-middle">
                       <div className="flex items-center gap-3">
                         <Avatar {...order.user} />
-                        <span className="font-medium text-[#1C1F2E]">{order.user.name}</span>
+                        <span className=" text-black">{order.user.name}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 align-middle text-[#1C1F2E]">{order.project}</td>
-                    <td className="px-6 py-4 align-middle text-[#4C5A73]">
+                    <td className="px-6 py-2 align-middle text-black">{order.project}</td>
+                    <td className="px-6 py-2 align-middle text-black">
                       <span className="block truncate">{order.address}</span>
                     </td>
-                    <td className="px-6 py-4 align-middle text-[#4C5A73]">
+                    <td className="px-6 py-2 align-middle text-black">
                       <span className="flex items-center gap-2">
                         <CalendarIcon />
                         {order.dateLabel}
                       </span>
                     </td>
-                    <td className="px-6 py-4 align-middle">
+                    <td className="px-6 py-2 align-middle">
                       <StatusBadge status={order.status} />
                     </td>
-                    <td className="px-6 py-4 align-middle text-right">
+                    <td className="px-6 py-2 align-middle text-right">
                       <button type="button" className="inline-flex justify-end">
                         <span className="sr-only">More actions</span>
                         <EllipsisIcon />
