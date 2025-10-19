@@ -32,7 +32,6 @@ export const orders: Order[] = [
     address: "Washburn Baton Rouge",
     dateLabel: "Yesterday",
     status: "approved",
-    selected: true,
   },
   {
     id: "#CMP805",
@@ -97,40 +96,40 @@ export const statusTokens: Record<
 > = {
   "in-progress": {
     label: "In Progress",
-    dot: "bg-[#6F52ED]",
-    text: "text-[#5B67F1] dark:text-[#B9C1FF]",
-    background: "bg-[#EEF1FF]",
+    dot: "bg-[#8A8CD9]",
+    text: "text-[#8A8CD9] dark:text-[#B9C1FF]",
+    background: "bg-[#F4F5FC]",
     darkBackground: "dark:bg-[#2B2D45]",
   },
   complete: {
     label: "Complete",
-    dot: "bg-[#4CAF50]",
-    text: "text-[#388E3C] dark:text-[#A0E8AE]",
-    background: "bg-[#E8F5E9]",
+    dot: "bg-[#4AA785]",
+    text: "text-[#4AA785] dark:text-[#A0E8AE]",
+    background: "bg-[#F0F7F4]",
     darkBackground: "dark:bg-[#1F3A28]",
   },
   pending: {
     label: "Pending",
-    dot: "bg-[#F1C232]",
-    text: "text-[#B68900] dark:text-[#F1C232]",
-    background: "bg-[#FFF8E6]",
-    darkBackground: "dark:bg-[#3A2E10]",
+    dot: "bg-[#59A8D4]",
+    text: "text-[#59A8D4] dark:text-[#A0D8FF]",
+    background: "bg-[#F0F8FC]",
+    darkBackground: "dark:bg-[#1A2A35]",
   },
   approved: {
     label: "Approved",
-    dot: "bg-[#4C9D61]",
-    text: "text-[#357A46] dark:text-[#A8E4C0]",
-    background: "bg-[#E8F4EC]",
-    darkBackground: "dark:bg-[#1C3224]",
+    dot: "bg-[#FFC555]",
+    text: "text-[#FFC555] dark:text-[#FFD580]",
+    background: "bg-[#FFF9F0]",
+    darkBackground: "dark:bg-[#3A2E10]",
   },
   rejected: {
     label: "Rejected",
-    dot: "bg-[#EB5757]",
-    text: "text-[#C62828] dark:text-[#FF9CA1]",
-    background: "bg-[#FDECEA]",
-    darkBackground: "dark:bg-[#3B1E1F]",
+    dot: "bg-gray-500",
+    text: "text-gray-500 dark:text-gray-400",
+    background: "bg-gray-100 dark:bg-gray-900",
+    darkBackground: "dark:bg-gray-800",
   },
 };
 
 export const actionButtonClass =
-  "inline-flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground hover:bg-muted/70  dark:hover:bg-muted/40";
+  "inline-flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground hover:bg-muted/70 dark:hover:bg-muted/40 cursor-pointer";
