@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
-import { IconChevronDown, IconDot } from "@/components/icons";
+import { IconChevronDown, IconDot } from "@/lib/icons";
 import type { NavItem } from "./types";
 
 interface NavItemProps {
@@ -45,7 +45,7 @@ export const NavItemComponent = ({
       <motion.button
         key={item.label}
         type="button"
-        className={`relative flex items-center gap-3 rounded-full py-1 text-sm transition-colors ${
+        className={`relative flex items-center gap-3 rounded-full py-1 text-sm transition-colors cursor-pointer ${
           isItemActive
             ? "text-sidebar-foreground"
             : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-foreground"
@@ -118,7 +118,7 @@ export const NavItemComponent = ({
     <div key={item.label} className="flex flex-col">
       <motion.button
         type="button"
-        className={`${containerBase} ${stateClasses}`}
+        className={`${containerBase} ${stateClasses} cursor-pointer`}
         onClick={handleClick}
         aria-expanded={isExpandable ? isItemExpanded : undefined}
       >

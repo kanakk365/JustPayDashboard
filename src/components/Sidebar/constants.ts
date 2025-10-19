@@ -9,7 +9,7 @@ import {
   IconPlay,
   IconSettings,
   IconUser,
-} from "@/components/icons";
+} from "@/lib/icons";
 import type { NavSection } from "./types";
 
 export const navSections: NavSection[] = [

@@ -10,7 +10,7 @@ import {
   IconSearch,
   IconStar,
   IconSun,
-} from "@/components/icons";
+} from "@/lib/icons";
 import { useSidebarStore } from "@/store/sidebarStore";
 import { useNotificationPanelStore } from "@/store/notificationPanelStore";
 import { useTheme } from "@/components/providers/theme-provider";

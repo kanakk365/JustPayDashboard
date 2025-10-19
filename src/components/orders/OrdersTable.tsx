@@ -2,7 +2,7 @@
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { IconSearch } from "@/components/icons";
+import { IconSearch } from "@/lib/icons";
 import { ListFilter, ArrowUpDown } from "lucide-react";
 import { Checkbox } from "./Checkbox";
 import { StatusBadge } from "./StatusBadge";

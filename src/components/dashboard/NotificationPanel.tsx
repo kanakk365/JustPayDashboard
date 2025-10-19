@@ -11,7 +11,7 @@ import {
   IconDocument,
   IconDot,
   IconUser,
-} from "@/components/icons";
+} from "@/lib/icons";
 import { Bug, User, Radio } from "lucide-react";
 import { useNotificationPanelStore } from "@/store/notificationPanelStore";
 import { cn } from "@/lib/utils";
