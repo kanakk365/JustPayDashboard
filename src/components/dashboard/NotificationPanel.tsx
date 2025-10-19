@@ -175,7 +175,7 @@ const PanelList = ({ items }: { items: PanelItem[] }) => (
         ) : (
           <span
             className={cn(
-              "grid h-8 w-8 place-items-center rounded-full flex-shrink-0",
+              "grid h-8 w-8 place-items-center rounded-full flex-shrink-0 dark:bg-card",
               item.accent
             )}
           >
@@ -183,11 +183,11 @@ const PanelList = ({ items }: { items: PanelItem[] }) => (
           </span>
         )}
         <div className="flex-1">
-          <p className="text-sm font-medium text-[#1A1F36] leading-snug">
+          <p className="text-sm font-medium text-[#1A1F36] dark:text-white leading-snug">
             {item.title}
           </p>
-          <p className="mt-1 flex items-center gap-1 text-xs text-[#8D95A5]">
-            <IconDot className="h-1.5 w-1.5 text-[#C6CBD9]" />
+          <p className="mt-1 flex items-center gap-1 text-xs text-[#8D95A5] dark:text-gray-400">
+            <IconDot className="h-1.5 w-1.5 text-[#C6CBD9] dark:text-gray-500" />
             {item.timestamp}
           </p>
         </div>
@@ -215,7 +215,7 @@ const ContactsList = ({ items }: { items: ContactItem[] }) => (
           ) : (
             <span
               className={cn(
-                "grid h-9 w-9 place-items-center rounded-full text-xs font-semibold uppercase text-white",
+                "grid h-9 w-9 place-items-center rounded-full text-xs font-semibold uppercase text-white ",
                 item.accent
               )}
             >
@@ -223,9 +223,9 @@ const ContactsList = ({ items }: { items: ContactItem[] }) => (
             </span>
           )}
           <div>
-            <p className="text-sm font-medium text-[#1A1F36]">{item.name}</p>
+            <p className="text-sm font-medium text-[#1A1F36] dark:text-white">{item.name}</p>
             {item.role ? (
-              <p className="text-xs text-[#8D95A5]">{item.role}</p>
+              <p className="text-xs text-[#8D95A5] dark:text-gray-400">{item.role}</p>
             ) : null}
           </div>
         </div>
@@ -235,22 +235,22 @@ const ContactsList = ({ items }: { items: ContactItem[] }) => (
 );
 
 const PanelContent = ({ onClose }: { onClose: () => void }) => (
-  <div className="flex h-full w-full flex-col border-l border-[#E5EAF3] bg-white">
+  <div className="flex h-full w-full flex-col border-l border-[#E5EAF3] dark:border-[#3a3a3a] bg-white dark:bg-[#1c1c1c]">
 
     <div className="flex-1">
       <div className="px-6 py-6">
         <section>
-          <h3 className="text-base font-semibold text-black">Notifications</h3>
+          <h3 className="text-base font-semibold text-black dark:text-white">Notifications</h3>
           <PanelList items={notifications} />
         </section>
 
         <section className="mt-8">
-            <h3 className="text-base font-semibold text-black">Activities</h3>
+            <h3 className="text-base font-semibold text-black dark:text-white">Activities</h3>
           <PanelList items={activities} />
         </section>
 
         <section className="mt-8">
-          <h2 className="text-base font-semibold text-black">Contacts</h2>
+          <h2 className="text-base font-semibold text-black dark:text-white">Contacts</h2>
           <ContactsList items={contacts} />
         </section>
       </div>
@@ -269,7 +269,7 @@ export const NotificationPanel = () => {
         initial={false}
         animate={{ width: isOpen ? 340 : 0, borderLeftWidth: isOpen ? 1 : 0 }}
         transition={{ duration: 0.28, ease: "easeInOut" }}
-        className="relative hidden flex-shrink-0 overflow-hidden bg-white md:block"
+        className="relative hidden flex-shrink-0 overflow-hidden bg-white dark:bg-[#1c1c1c] md:block"
       >
         <AnimatePresence initial={false}>
           {isOpen ? (

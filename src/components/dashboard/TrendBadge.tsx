@@ -1,5 +1,5 @@
-export const TrendBadge = ({ change, tone }: { change: string; tone: "positive" | "negative" }) => (
-  <div className="flex items-center gap-2 text-base font-medium text-[#1C1C1C]">
+export const TrendBadge = ({ change, tone, className }: { change: string; tone: "positive" | "negative"; className?: string }) => (
+  <div className={` trend flex items-center gap-2 text-base font-medium text-[#1C1C1C] ${className ?? ""}`}>
     <span>{change}</span>
     <svg
       width="20"
@@ -7,6 +7,7 @@ export const TrendBadge = ({ change, tone }: { change: string; tone: "positive" 
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       {tone === "positive" ? (
         <path

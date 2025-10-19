@@ -28,15 +28,24 @@ const chartData = [
 const chartConfig = {
   previous: {
     label: "Previous Week",
-    color: "#91B7F9",
+    theme: {
+      light: "#91B7F9",
+      dark: "#a8c5da",
+    },
   },
   current: {
     label: "Current Week",
-    color: "#111827",
+    theme: {
+      light: "#111827",
+      dark: "#a8c5da",
+    },
   },
   currentProjection: {
     label: "Projected",
-    color: "#111827",
+    theme: {
+      light: "#111827",
+      dark: "#c6c7f8",
+    },
   },
 } satisfies ChartConfig;
 
@@ -55,12 +64,12 @@ export const LineChart = ({ className }: RevenueLineChartProps) => (
     >
       <defs>
         <linearGradient id="previousWeekGradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#D5E6FF" stopOpacity={0.7} />
-          <stop offset="100%" stopColor="#D5E6FF" stopOpacity={0} />
+          <stop offset="0%" stopColor="var(--line-gradient-start)" stopOpacity={0.7} />
+          <stop offset="100%" stopColor="var(--line-gradient-start)" stopOpacity={0} />
         </linearGradient>
       </defs>
 
-      <CartesianGrid stroke="#EEF1F6" vertical={false} />
+      <CartesianGrid stroke="var(--line-grid-stroke)" vertical={false} />
       <XAxis
         dataKey="month"
         axisLine={false}
@@ -75,7 +84,7 @@ export const LineChart = ({ className }: RevenueLineChartProps) => (
         ticks={[10, 20, 30]}
         domain={[0, 30]}
         tickMargin={16}
-        tick={{ fill: "#94A3B8", fontSize: 12 }}
+        tick={{ fill: "var(--line-tick-color)", fontSize: 12 }}
         tickFormatter={(value) => `${value}M`}
         padding={{ top: 0, bottom: 20 }}
       />

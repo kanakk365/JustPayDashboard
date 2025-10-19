@@ -11,7 +11,7 @@ export const Dashboard = () => {
     <ScrollArea className="h-full w-full">
       <div className="flex flex-col gap-8 px-8 py-8">
         <div>
-          <h1 className="text-lg font-semibold text-black">eCommerce</h1>
+          <h1 className="text-lg font-semibold text-foreground">eCommerce</h1>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">

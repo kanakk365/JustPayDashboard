@@ -2,28 +2,30 @@ import { topSellingProducts } from "./constants";
 
 export const TopSellingProducts = () => {
   return (
-    <div className="rounded-3xl bg-[#f7f9fb] py-6 px-3 ">
-      <h3 className="text-lg font-semibold text-[#0F172A] px-6">Top Selling Products</h3>
+    <div className="rounded-3xl bg-card py-6 px-3">
+      <h3 className="px-6 text-lg font-semibold text-foreground">Top Selling Products</h3>
 
-      <div className=" overflow-hidden">
+      <div className="overflow-hidden">
         <table className="w-full table-fixed border-collapse text-sm">
-          <thead className="text-left font-thin text-sm text-neutral-400 border-b border-neutral-300">
+          <thead className="border-b border-border text-left text-sm font-thin text-muted-foreground">
             <tr>
-              <th className="px-6 py-4 text-sm font-normal ">Name</th>
-              <th className="px-6 py-4 text-sm font-normal ">Price</th>
-              <th className="px-6 py-4 text-sm font-normal ">Quantity</th>
-              <th className="px-6 py-4 text-sm font-normal ">Amount</th>
+              <th className="px-6 py-4 text-sm font-normal">Name</th>
+              <th className="px-6 py-4 text-sm font-normal">Price</th>
+              <th className="px-6 py-4 text-sm font-normal">Quantity</th>
+              <th className="px-6 py-4 text-sm font-normal">Amount</th>
             </tr>
           </thead>
-          <tbody className=" text-sm text-[#1C1F2E]">
+          <tbody className="text-sm text-foreground">
             {topSellingProducts.map((product) => (
-              <tr key={product.name} className="">
-                <td className="px-6 py-3 text-sm text-[#1C1F2E] font-normal">
-                  {product.name}
+              <tr key={product.name} className="border-b border-border/60 last:border-0">
+                <td className="px-6 py-3 text-sm font-normal text-foreground">{product.name}</td>
+                <td className="px-6 py-3 text-sm font-normal text-foreground">
+                  {product.price}
                 </td>
-                <td className="px-6 py-3 text-sm text-black font-normal">{product.price}</td>
-                <td className="px-6 py-3 text-sm text-black font-normal">{product.quantity}</td>
-                <td className="px-6 py-3 text-sm text-black font-normal">
+                <td className="px-6 py-3 text-sm font-normal text-foreground">
+                  {product.quantity}
+                </td>
+                <td className="px-6 py-3 text-sm font-normal text-foreground">
                   {product.amount}
                 </td>
               </tr>

@@ -18,7 +18,7 @@ export const DashboardLayout = ({
   sectionLabel = "Dashboards",
 }: DashboardLayoutProps) => {
   return (
-    <div className="flex h-screen max-h-screen bg-white text-[#1A1F36]">
+    <div className="flex h-screen max-h-screen bg-background text-foreground">
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Navbar sectionLabel={sectionLabel} pageLabel={pageLabel} />

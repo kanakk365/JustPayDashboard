@@ -19,15 +19,15 @@ export const TotalSalesDonut = () => {
     const percent = total > 0 ? (Number(value) / total) * 100 : 0;
 
     return (
-      <div className="rounded-lg bg-[#1C1F2E] px-3 py-1 text-xs font-semibold text-white">
+      <div className="rounded-lg bg-foreground px-3 py-1 text-xs font-semibold text-background">
         {percent.toFixed(1)}%
       </div>
     );
   };
 
   return (
-    <div className="rounded-3xl bg-[#f7f9fb] p-6">
-      <h3 className="text-lg font-semibold text-[#0F172A]">Total Sales</h3>
+    <div className="rounded-3xl bg-card p-6">
+      <h3 className="text-lg font-semibold text-foreground">Total Sales</h3>
 
       <div className=" flex flex-col items-center w-64 mx-auto">
         <div className="relative h-52 w-52">
@@ -61,7 +61,7 @@ export const TotalSalesDonut = () => {
 
         <ul className="w-full space-y-3 text-sm">
           {totalSalesBreakdown.map((entry) => (
-            <li key={entry.label} className="flex items-center justify-between text-[#0F172A]">
+            <li key={entry.label} className="flex items-center justify-between text-foreground">
               <span className="flex items-center gap-4">
                 <span
                   className="h-2 w-2 rounded-full"
