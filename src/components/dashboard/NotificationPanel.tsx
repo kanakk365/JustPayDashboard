@@ -3,14 +3,9 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  IconBell,
-  IconChat,
-  IconClock,
-  IconDocument,
   IconDot,
-  IconUser,
 } from "@/lib/icons";
 import { Bug, User, Radio } from "lucide-react";
 import { useNotificationPanelStore } from "@/store/notificationPanelStore";
@@ -236,6 +231,28 @@ const ContactsList = ({ items }: { items: ContactItem[] }) => (
 
 const PanelContent = ({ onClose }: { onClose: () => void }) => (
   <div className="flex h-full w-full flex-col border-l border-[#E5EAF3] dark:border-[#3a3a3a] bg-white dark:bg-[#1c1c1c]">
+    <div className="flex md:hidden items-center justify-between px-6 py-4 border-b border-[#E5EAF3] dark:border-[#3a3a3a]">
+      <h2 className="text-lg font-semibold text-black dark:text-white">Panel</h2>
+      <button
+        onClick={onClose}
+        className="text-foreground hover:opacity-80 transition"
+        aria-label="Close notifications panel"
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
 
     <div className="flex-1">
       <div className="px-6 py-6">

@@ -141,3 +141,17 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    @apply text-sm;
+  }
+
+  button {
+    @apply min-h-10 min-w-10;
+  }
+
+  main {
+    @apply overflow-y-auto;
+  }
+}
