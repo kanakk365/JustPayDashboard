@@ -105,20 +105,24 @@ export const totalSalesBreakdown = [
     label: "Direct",
     value: 300.56,
     color: "#1c1c1c",
+    darkColor: "#c6c7f8",
   },
   {
     label: "Affiliate",
     value: 135.18,
     color: "#baedbd",
+    darkColor: "#baedbd",
   },
   {
     label: "Sponsored",
     value: 154.02,
     color: "#95a4fc",
+    darkColor: "#95a4fc",
   },
   {
     label: "E-mail",
     value: 48.96,
     color: "#b1e3ff",
+    darkColor: "#b1e3ff",
   },
 ];

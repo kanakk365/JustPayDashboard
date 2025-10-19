@@ -1,13 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { TooltipProps } from "recharts";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import { totalSalesBreakdown } from "./constants";
 
 export const TotalSalesDonut = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const total = totalSalesBreakdown.reduce((sum, item) => sum + item.value, 0);
   const highlightIndex = 0;
+
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setIsDarkMode(isDark);
+
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const renderTooltipContent = ({ payload }: TooltipProps<number, string>) => {
     if (!payload || payload.length === 0) {
@@ -45,7 +63,7 @@ export const TotalSalesDonut = () => {
                 {totalSalesBreakdown.map((entry, index) => (
                   <Cell
                     key={entry.label}
-                    fill={entry.color}
+                    fill={isDarkMode ? entry.darkColor : entry.color}
                     opacity={index === highlightIndex ? 1 : 0.85}
                   />
                 ))}
@@ -65,7 +83,7 @@ export const TotalSalesDonut = () => {
               <span className="flex items-center gap-4">
                 <span
                   className="h-2 w-2 rounded-full"
-                  style={{ backgroundColor: entry.color }}
+                  style={{ backgroundColor: isDarkMode ? entry.darkColor : entry.color }}
                 />
                 {entry.label}
               </span>

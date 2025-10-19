@@ -106,7 +106,7 @@ const Navbar = ({ sectionLabel, pageLabel }: NavbarProps) => {
             }
           }}
           
-          transition={{ duration: 0.4, ease: "easeInOut" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           className="grid place-items-center text-foreground transition cursor-pointer w-5 h-5 "
           aria-label="Toggle theme"
         >
