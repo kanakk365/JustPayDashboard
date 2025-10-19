@@ -15,6 +15,7 @@ import { useNotificationPanelStore } from "@/store/notificationPanelStore";
 import { useTheme } from "@/components/providers/theme-provider";
 import { Moon } from "lucide-react";
 
+
 type NavbarProps = {
   sectionLabel: string;
   pageLabel: string;
@@ -28,7 +29,7 @@ const Navbar = ({ sectionLabel, pageLabel }: NavbarProps) => {
   const { theme, toggleTheme, isLoaded } = useTheme();
 
   const themeIcon = useMemo(
-    () => (theme === "dark" ? <Moon className="h-5 w-5" /> : <IconSun />),
+    () => (theme === "dark" ? <Moon className="h-4 w-4" /> : <IconSun />),
     [theme]
   );
 
@@ -80,7 +81,7 @@ const Navbar = ({ sectionLabel, pageLabel }: NavbarProps) => {
             </motion.div>
           </span>
           <input
-            type="search"
+            type="text"
             placeholder="Search"
             onClick={() => triggerAnimation("search")}
             className="h-10 w-60 rounded-lg bg-muted pl-10 pr-20 text-sm text-foreground outline-none transition focus:border-primary"
@@ -93,21 +94,19 @@ const Navbar = ({ sectionLabel, pageLabel }: NavbarProps) => {
           onClick={() => triggerAnimation("clock")}
           animate={isAnimating("clock") ? { rotate: [0, 360] } : { rotate: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="grid place-items-center text-foreground transition"
+          className="grid place-items-center text-foreground transition cursor-pointer"
         >
           <IconClock />
         </motion.button>
         <motion.button
-          onClick={() =>
-            triggerAnimation("theme", () => {
-              if (isLoaded) {
-                toggleTheme();
-              }
-            })
-          }
-          animate={isAnimating("theme") ? { scale: [1, 1.2, 1] } : { scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="grid place-items-center text-foreground transition"
+          onClick={() => {
+            if (isLoaded) {
+              toggleTheme();
+            }
+          }}
+          whileTap={{ rotate: 360, scale: 0.8 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="grid place-items-center text-foreground transition cursor-pointer"
           aria-label="Toggle theme"
         >
           {themeIcon}
@@ -130,7 +129,7 @@ const Navbar = ({ sectionLabel, pageLabel }: NavbarProps) => {
             triggerAnimation("menu-right", toggleSidebar);
           }}
           whileTap={{ scale: 0.9 }}
-          className="grid place-items-center text-foreground transition"
+          className="grid place-items-center text-foreground transition cursor-pointer"
         >
           <span className="sr-only">Toggle sidebar</span>
           <IconMenu />

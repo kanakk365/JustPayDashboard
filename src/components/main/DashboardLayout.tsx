@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import Sidebar from "@/components/Sidebar";
 import { NotificationPanel } from "@/components/dashboard/NotificationPanel";
 
 type DashboardLayoutProps = {
