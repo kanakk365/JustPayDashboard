@@ -9,7 +9,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 export const Dashboard = () => {
   return (
     <ScrollArea className="h-full w-full">
-      <div className="flex flex-col gap-8 px-8 py-8">
+      <div className="flex flex-col gap-8 px-3 sm:px-8 py-8">
         <div>
           <h1 className="text-lg font-semibold text-foreground">eCommerce</h1>
         </div>

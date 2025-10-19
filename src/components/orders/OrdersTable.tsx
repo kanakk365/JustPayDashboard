@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { IconSearch } from "@/lib/icons";
 import { ListFilter, ArrowUpDown } from "lucide-react";
@@ -21,8 +21,10 @@ export const OrdersTable = () => {
     []
   );
 
-  const isAllSelected = selectedIds.size === orderKeys.length && orderKeys.length > 0;
-  const isSomeSelected = selectedIds.size > 0 && selectedIds.size < orderKeys.length;
+  const isAllSelected =
+    selectedIds.size === orderKeys.length && orderKeys.length > 0;
+  const isSomeSelected =
+    selectedIds.size > 0 && selectedIds.size < orderKeys.length;
 
   const handleSelectAll = () => {
     if (isAllSelected) {
@@ -43,11 +45,17 @@ export const OrdersTable = () => {
   };
 
   return (
-    <ScrollArea className="h-full w-full">
+    <ScrollArea
+      className="h-full w-full"
+      viewportClassName="min-w-full"
+      orientation="both"
+    >
       <div className="flex flex-col gap-6 px-4 py-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h1 className="text-lg font-semibold text-foreground">Orders List</h1>
+            <h1 className="text-lg font-semibold text-foreground">
+              Orders List
+            </h1>
           </div>
         </div>
 
@@ -85,18 +93,52 @@ export const OrdersTable = () => {
               <thead className="text-xs font-semibold text-muted-foreground">
                 <tr className="border-b border-border">
                   <th scope="col" className="w-8 py-2 text-left">
-                    <Checkbox 
+                    <Checkbox
                       checked={isAllSelected}
                       onClick={handleSelectAll}
                     />
                   </th>
-                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin text-foreground">Order ID</th>
-                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin text-foreground">User</th>
-                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin text-foreground">Project</th>
-                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin text-foreground">Address</th>
-                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin text-foreground">Date</th>
-                  <th scope="col" className="px-6 py-2 text-left text-sm font-thin text-foreground">Status</th>
-                  <th scope="col" className="px-6 py-2 text-right text-sm font-thin" aria-label="Actions" />
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-left text-sm font-thin text-foreground"
+                  >
+                    Order ID
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-left text-sm font-thin text-foreground"
+                  >
+                    User
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-left text-sm font-thin text-foreground"
+                  >
+                    Project
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-left text-sm font-thin text-foreground"
+                  >
+                    Address
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-left text-sm font-thin text-foreground"
+                  >
+                    Date
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-left text-sm font-thin text-foreground"
+                  >
+                    Status
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-2 text-right text-sm font-thin"
+                    aria-label="Actions"
+                  />
                 </tr>
               </thead>
               <tbody className="text-sm text-foreground">
@@ -114,19 +156,25 @@ export const OrdersTable = () => {
                       )}
                     >
                       <td className="w-8 py-2 align-middle">
-                        <Checkbox 
+                        <Checkbox
                           checked={isSelected}
                           onClick={() => handleSelectRow(rowKey)}
                         />
                       </td>
-                      <td className="px-6 py-2 align-middle text-foreground">{order.id}</td>
+                      <td className="px-6 py-2 align-middle text-foreground">
+                        {order.id}
+                      </td>
                       <td className="px-6 py-2 align-middle">
                         <div className="flex items-center gap-3">
                           <Avatar {...order.user} />
-                          <span className="text-foreground">{order.user.name}</span>
+                          <span className="text-foreground">
+                            {order.user.name}
+                          </span>
                         </div>
                       </td>
-                      <td className="px-6 py-2 align-middle text-foreground">{order.project}</td>
+                      <td className="px-6 py-2 align-middle text-foreground">
+                        {order.project}
+                      </td>
                       <td className="px-6 py-2 align-middle text-foreground">
                         <span className="block truncate">{order.address}</span>
                       </td>
@@ -139,7 +187,10 @@ export const OrdersTable = () => {
                         <StatusBadge status={order.status} />
                       </td>
                       <td className="px-6 py-2 align-middle text-right">
-                        <button type="button" className="inline-flex justify-end text-muted-foreground hover:text-foreground">
+                        <button
+                          type="button"
+                          className="inline-flex justify-end text-muted-foreground hover:text-foreground"
+                        >
                           <span className="sr-only">More actions</span>
                         </button>
                       </td>
@@ -152,10 +203,6 @@ export const OrdersTable = () => {
           <Pagination />
         </div>
       </div>
-      <ScrollBar />
     </ScrollArea>
   );
 };
-
-
-
